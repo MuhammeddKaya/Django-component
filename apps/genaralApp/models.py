@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.sites.models import Site
 
+
 # Create your models here.
 class Template(models.Model):
     TemplateName = models.CharField(max_length=80)
@@ -36,4 +37,20 @@ class Language(models.Model):
     
     def __str__(self):
         return self.LanguageName
+
+
+#class FAQ(models.Model):
+#    '''Sıkça sorulan sorular modeli'''
+#    Question = models.TextField()
+#    Answer = models.TextField()
+#    Order = models.PositiveIntegerField(default=1)
+#    IsDeleted = models.BooleanField(default=False)
+#    IsActive = models.BooleanField(default=True)
+#    Page = models.ForeignKey(Pages, on_delete=models.PROTECT, verbose_name="Sayfa", related_name="faqs")
+#
+#    class Meta:
+#       db_table="FAQ"
+#
+#    def __str__(self):
+#        return self.Question
     

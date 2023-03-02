@@ -22,8 +22,7 @@ def contentView(request, slug):
     print('rew_page_id::::::::::::::', req_page.id)
     component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
     print('component_list : ', component_list)
-    slider_list = Slider.objects.all()
-    page = Pages.objects.filter(Slug= slug)
+    slider_list = Slider.objects.filter(IsActive=True).order_by('-Order').values()
     context = {'component_list': component_list,'menu_list': menu_list,'slider_list': slider_list}
     return render(request, 'pages/content.html', context)
  
