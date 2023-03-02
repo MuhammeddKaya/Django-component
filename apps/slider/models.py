@@ -11,7 +11,7 @@ class Slider(models.Model):
     Image = models.ImageField(upload_to='sliderImage', blank=True,default='assets/img/slide/slide-1.jpg')
     StartDate = models.DateTimeField()
     EndDate = models.DateTimeField()
-    Slug = models.SlugField(max_length=1000, unique=True, blank=True)
+    Order = models.PositiveIntegerField(default=1)
     CreatedAt = models.DateTimeField(auto_now_add=True)
     IsActive = models.BooleanField(default=True)
     IsDeleted = models.BooleanField(default=False)
