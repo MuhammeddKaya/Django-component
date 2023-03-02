@@ -2,7 +2,6 @@
 
 
 {% block content %}
-<h1>Component : {{component_list}}</h1>
 
 {% for component in component_list %}
     {% with "../component/"|add:component.Component.ComponentFile  as widget %}
