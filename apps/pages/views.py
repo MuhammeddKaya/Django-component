@@ -1,10 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
-
 from apps.pages.models import Pages
 from apps.componentApp.models import ComponentsPages, Component,Pages
 from apps.slider.models import Slider
-
 
 
 def homeContentView(request):
