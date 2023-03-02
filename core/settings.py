@@ -37,18 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.pages',
-    'apps.news',
-    'apps.announcement',
-    'apps.links',
-    'apps.slider',
-    'apps.photogallery',
-    'apps.socialmedia',
-    'apps.componentApp',
-    'apps.genaralApp',
     'mptt',
     'django.contrib.sites',
 
+
+    # local libraries
+    'apps.pages.apps.PagesConfig',
+    'apps.news.apps.NewsConfig',
+    'apps.announcement.apps.AnnouncementConfig',
+    'apps.links.apps.LinksConfig',
+    'apps.slider.apps.SliderConfig',
+    'apps.photogallery.apps.PhotogalleryConfig',
+    'apps.socialmedia.apps.SocialmediaConfig',
+    'apps.componentApp.apps.ComponentappConfig',
+    'apps.genaralApp.apps.GenaralappConfig',
+
+
+    #3rd party libraries
 ]
 
 MIDDLEWARE = [
@@ -74,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media', # for access the MEDIA_URL in template
             ],
         },
     },

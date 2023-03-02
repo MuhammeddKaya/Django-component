@@ -1,0 +1,34 @@
+{% load static %}
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+  
+          <div class="row">
+  
+            <div class="col-lg-8 entries">
+  
+              <article class="entry">
+                {% for project in project_list %}
+                <div class="entry-img">
+                  <img src="{{project.Image}}" alt="" class="img-fluid">
+                </div>
+                
+                <h2 class="entry-title">
+                  <a href="blog-single.html">{{project.Title}}</a>
+                </h2>
+  
+                <div class="entry-content">
+                  <p>
+                    {{project.description}}
+                  </p>
+                  <div class="read-more">
+                    <a href="{{project.url}}">Read More</a>
+                  </div>
+                </div>
+                {% endfor %}
+          </div>
+  
+        </div>
+      </section><!-- End Blog Section -->
+  
+    </main><!-- End #main -->

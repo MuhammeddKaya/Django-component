@@ -188,3 +188,7 @@ core/__pycache__/urls.cpython-310.pyc
 core/__pycache__/__init__.cpython-310.pyc
 .vscode/settings.json
 
+apps/announcement/__pycache__/__init__.cpython-310.pyc
+apps/announcement/__pycache__/admin.cpython-310.pyc
+apps/announcement/__pycache__/apps.cpython-310.pyc
+apps/announcement/__pycache__/models.cpython-310.pyc
