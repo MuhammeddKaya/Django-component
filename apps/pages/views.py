@@ -7,22 +7,27 @@ from apps.slider.models import Slider
 
 
 
-def homeContentView(request):
-    print('--------------------------------------------------------------------------------------------------------------------------------------------')
-    menu_list = Pages.objects.all()
-    slider_list = Slider.objects.all()
-    context = { 'menu_list': menu_list,'slider_list': slider_list}
-    return render(request, 'pages/content.html', context)
+def contentView(request, slug=''):
+    if not slug:
+        menu_list = Pages.objects.all()
+        req_page = Pages.objects.get(Slug='home')
+        component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
+        print('Slug is None')
+        menu_list = Pages.objects.all()
+        slider_list = Slider.objects.all()
+        context = {'component_list': component_list,'menu_list': menu_list,'slider_list': slider_list}
+        return render(request, 'pages/content.html', context)
+    else:
 
-def contentView(request, slug):
-    print('************************************************ slug: ',slug)
-    menu_list = Pages.objects.all()
-    req_page = Pages.objects.get(Slug=slug)
-    print('--------------------------------------------------------------------------------req_page',req_page)
-    print('rew_page_id::::::::::::::', req_page.id)
-    component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
-    print('component_list : ', component_list)
-    slider_list = Slider.objects.filter(IsActive=True).order_by('-Order').values()
-    context = {'component_list': component_list,'menu_list': menu_list,'slider_list': slider_list}
-    return render(request, 'pages/content.html', context)
+        print('Else kısmı caliştı ',slug)
+        menu_list = Pages.objects.all()
+        req_page = Pages.objects.get(Slug=slug)
+        print('--------------------------------------------------------------------------------req_page',req_page)
+        print('rew_page_id::::::::::::::', req_page.id)
+        component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
+        print('component_list : ', component_list)
+        slider_list = Slider.objects.all()
+        context = {'component_list': component_list,'menu_list': menu_list,'slider_list': slider_list}
+        return render(request, 'pages/content.html', context)
+
  
