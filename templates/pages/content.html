@@ -1,12 +1,14 @@
 {% extends '../_base.html' %}
 
 
+
 {% block content %}
 <h1>Component : {{component_list}}</h1>
 
 {% for component in component_list %}
-    {% with "../component/"|add:component.Component.ComponentFile  as widget %}
-        {% include widget %}
+    {% with "component/"|add:component.Component.ComponentFile  as widget %}
+        {{ widget }}
+        {% include "pages/component/_contactusForm.html" %}
 
     {% endwith %}
 {% endfor %}
