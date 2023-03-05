@@ -1,0 +1,7 @@
+
+{% for component in componentsPagesContent %}
+    {% with "../component/"|add:component.Component.ComponentFile  as widget %}
+        {% include widget %}
+
+    {% endwith %}
+{% endfor %}

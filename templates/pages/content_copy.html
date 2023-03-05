@@ -1,0 +1,17 @@
+{% extends '../_base.html' %}
+
+
+
+
+{% block content%}
+
+    {% with "../layouts/"|add:layout_list.Layout as layout %}
+    {% include layout %}
+    {% endwith %}
+{{componentsPagesRight}}
+
+{% endblock %}
+
+
+
+

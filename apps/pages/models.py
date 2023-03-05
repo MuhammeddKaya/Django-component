@@ -8,6 +8,7 @@ LAYOUT_CHOICES=(
     ('_layout01.html', 'Layout-1'),
     ('_layout02.html', 'Layout-2'),
     ('_layout03.html', 'Layout-3'),
+    ('_layout04.html', 'Layout-4'),
 )
 
 

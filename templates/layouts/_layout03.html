@@ -1,0 +1,19 @@
+<div class="section-content">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-lg-8">
+            {% for component in componentsPagesContent %}
+                {% with "../component/"|add:component.Component.ComponentFile  as widget %}
+                    {% include widget %}
+
+                {% endwith %}
+            {% endfor %}
+        </div>
+        <div class="col-6 col-lg-4">
+            {% for pageComponent in componentsPagesRight %}
+                {% with template|add:"/components/"|add:pageComponent.Component.ComponentFile as widget %}
+                {% include widget %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

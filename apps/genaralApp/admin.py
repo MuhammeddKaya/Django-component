@@ -5,3 +5,4 @@ from apps.genaralApp.models import Domain, Template, Language
 admin.site.register(Domain)
 admin.site.register(Template)
 admin.site.register(Language)
+#admin.site.register(FAQ)
