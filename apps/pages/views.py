@@ -2,6 +2,8 @@ from django.shortcuts import render
 from apps.pages.models import Pages
 from apps.componentApp.models import ComponentsPages, Component,Pages
 from apps.slider.models import Slider
+from django.urls import path, re_path
+
 
 
 def homeContentView(request):
