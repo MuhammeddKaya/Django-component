@@ -6,22 +6,68 @@ from django.urls import path, re_path
 
 
 
-def homeContentView(request):
-    print('--------------------------------------------------------------------------------------------------------------------------------------------')
-    menu_list = Pages.objects.all()
-    slider_list = Slider.objects.all()
-    context = { 'menu_list': menu_list,'slider_list': slider_list}
-    return render(request, 'pages/content.html', context)
+def contentView(request, slug=''):
+    if not slug:
+        menu_list = Pages.objects.all()
+        req_page = Pages.objects.get(Slug='home')
+        component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
+        layout_list = Pages.objects.get(Slug='home')
+        #layout_list = Pages.objects.filter(Page_id = req_page.id )
+        print('Slug is None')
+        menu_list = Pages.objects.all()
+        slider_list = Slider.objects.all()
+        context =  {'component_list': component_list,
+                    'layout_list': layout_list,
+                    'menu_list': menu_list,
+                    'slider_list': slider_list,
+                    #'componentsPagesHeader': component_list.filter(ComponentLocation='01H').order_by('ComponentOrder').all(),
+                    'componentsPagesLeft': component_list.filter(ComponentLocation='02L').order_by('ComponentOrder').all(),
+                    'componentsPagesContent': component_list.filter(ComponentLocation='03C').order_by('ComponentOrder').all(),
+                    'componentsPagesRight': component_list.filter(ComponentLocation='04R').order_by('ComponentOrder').all(),}
+        return render(request, 'pages/content_copy.html', context)
+    else:
 
-def contentView(request, slug):
-    print('************************************************ slug: ',slug)
-    menu_list = Pages.objects.all()
-    req_page = Pages.objects.get(Slug=slug)
-    print('--------------------------------------------------------------------------------req_page',req_page)
-    print('rew_page_id::::::::::::::', req_page.id)
-    component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
-    print('component_list : ', component_list)
-    slider_list = Slider.objects.filter(IsActive=True).order_by('-Order').values()
-    context = {'component_list': component_list,'menu_list': menu_list,'slider_list': slider_list}
-    return render(request, 'pages/content.html', context)
+        print('Else kısmı caliştı ',slug)
+        menu_list = Pages.objects.all()
+        req_page = Pages.objects.get(Slug=slug)
+        print('--------------------------------------------------------------------------------req_page',req_page)
+        print('rew_page_id::::::::::::::', req_page.id)
+        component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
+        layout_list = Pages.objects.get(Slug=slug)
+        print('layout_list : ', layout_list)
+        slider_list = Slider.objects.all()
+        context = {'component_list': component_list,
+                   'layout_list': layout_list,
+                   'menu_list': menu_list,
+                   'slider_list': slider_list,
+                    'componentsPagesLeft': component_list.filter(ComponentLocation='02L').order_by('ComponentOrder').all(),
+                    'componentsPagesContent': component_list.filter(ComponentLocation='03C').order_by('ComponentOrder').all(),
+                    'componentsPagesRight': component_list.filter(ComponentLocation='04R').order_by('ComponentOrder').all(),}
+        return render(request, 'pages/content_copy.html', context)
+    
+
+
+# def contentView(request, slug=''):
+#     if not slug:
+#         menu_list = Pages.objects.all()
+#         req_page = Pages.objects.get(Slug='home')
+#         component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
+#         print('Slug is None')
+#         menu_list = Pages.objects.all()
+#         slider_list = Slider.objects.all()
+#         context = {'component_list': component_list,'menu_list': menu_list,'slider_list': slider_list}
+#         return render(request, 'pages/content.html', context)
+#     else:
+
+#         print('Else kısmı caliştı ',slug)
+#         menu_list = Pages.objects.all()
+#         req_page = Pages.objects.get(Slug=slug)
+#         print('--------------------------------------------------------------------------------req_page',req_page)
+#         print('rew_page_id::::::::::::::', req_page.id)
+#         component_list = ComponentsPages.objects.filter(Page_id = req_page.id)
+#         print('component_list : ', component_list)
+#         slider_list = Slider.objects.all()
+#         context = {'component_list': component_list,'menu_list': menu_list,'slider_list': slider_list}
+#         return render(request, 'pages/content.html', context)
+
  

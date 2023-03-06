@@ -1,0 +1,20 @@
+<div class="section-content">
+    <div class="row">
+        <div class="col-6 col-lg-4">
+            {% for component in componentsPagesLeft %}
+                {% with template|add:"../component/"|add:component.Component.ComponentFile  as widget%}
+                {% include widget %}
+                {% endwith %}
+            {% endfor %}
+
+        </div>
+        <div class="col-12 col-sm-6 col-lg-8">
+            {% for component in componentsPagesContent %}
+                {% with "../component/"|add:component.Component.ComponentFile  as widget %}
+                    {% include widget %}
+
+                {% endwith %}
+            {% endfor %}           
+        </div>
+    </div>
+</div>
