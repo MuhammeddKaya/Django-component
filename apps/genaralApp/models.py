@@ -40,18 +40,18 @@ class Language(models.Model):
         return self.LanguageName
 
 
-# class FAQ(models.Model):
-#     '''Sıkça sorulan sorular modeli'''
-#     Question = models.TextField()
-#     Answer = models.TextField()
-#     Order = models.PositiveIntegerField(default=1)
-#     IsDeleted = models.BooleanField(default=False)
-#     IsActive = models.BooleanField(default=True)
+class FAQ(models.Model):
+    '''Sıkça sorulan sorular modeli'''
+    Question = models.TextField()
+    Answer = models.TextField()
+    Order = models.PositiveIntegerField(default=1)
+    IsDeleted = models.BooleanField(default=False)
+    IsActive = models.BooleanField(default=True)
 
 
-#     class Meta:
-#        db_table="FAQ"
+    class Meta:
+       db_table="FAQ"
 
-#     def __str__(self):
-#         return self.Question
+    def __str__(self):
+        return self.Question
     
