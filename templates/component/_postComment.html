@@ -1,0 +1,130 @@
+  {% load static %}
+  {%load crispy_forms_tags %}
+
+
+
+    <div class="blog-page area-padding" style="margin-top:50px;">
+      <div class="container">
+        <div class="row">
+                  <div class="comments-area">
+                    <div class="comments-heading">
+                      <h3>Comments</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                      <form method="get" role="search" action="">
+                      {% csrf_token %}
+                        <div class="search-option">
+                          <input type="text" name="q" placeholder="Search in comments...">
+                          <button class="button" type="submit">
+                            <i class="bi bi-search"></i>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    {% for post in post_list %}
+                    <div class="comments-details">
+                      <div class="comments-list-img">
+                        <img src="{% static 'assets/img/blog/b02.jpg' %}" alt="post-author">
+                      </div>
+                      <div class="comments-content-wrap">
+                        <span>
+                          <b><a href="#">{{post.Name}}-{{post.SurName}}</a></b>
+                          Post author
+                          <span class="post-time">{{post.IsCreated}}</span>
+                        </span>
+                        <p>{{post.Comment}}</p>
+                      </div>
+                    </div>                    
+                    {% endfor %}
+
+                    {% for contact in contacts %}
+                        {# Each "contact" is a Contact model object. #}
+                        {{ contact.full_name|upper }}<br />
+                        ...
+                    {% endfor %}
+
+                    <div class="pagination">
+                        <span class="step-links">
+                            {% if posts.has_previous %}
+                                <a href="?page={{ posts.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+                            </span>
+
+                            {% if posts.has_next %}
+                                <a href="?page={{ posts.next_page_number }}">next</a>
+                            {% endif %}
+                        </span>
+                    </div>
+
+                  </div>
+                  <div class="comment-respond">
+                    <h3 class="comment-reply-title">Leave a Comment </h3>
+                    <!-- <span class="email-notes">Your email address will not be published. Required fields are marked *</span> -->
+                    <form method='POST'>
+                      {% csrf_token %}
+                      {{form}}
+                      <input type="submit" />
+                    </form>
+                  </div> 
+                </div>
+        </div>
+      </div>
+    </div><!-- End Blog Page -->
+
+<!-- 
+        <div class="blog-page area-padding" style="margin-top:50px;">
+      <div class="container">
+        <div class="row">
+                  <div class="comments-area">
+                    <div class="comments-heading">
+                      <h3>Comments</h3>
+                    </div>
+                    <div class="comments-list">
+                      <ul>
+                        <li class="threaded-comments">
+                          <div class="comments-details">
+                            <div class="comments-list-img">
+                              <img src="assets/img/blog/1.jpg" alt="post-author">
+                            </div>
+                            <div class="comments-content-wrap">
+                              <span>
+                                <b><a href="#">demo</a></b>
+                                Post author
+                                <span class="post-time">October 6, 2014 at 4:25 pm</span>
+                                <a href="#">Reply</a>
+                              </span>
+                              <p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur</p>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="comment-respond">
+                    <h3 class="comment-reply-title">Leave a Reply </h3>
+                    <span class="email-notes">Your email address will not be published. Required fields are marked *</span>
+                    <form action="#">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-4">
+                          <p>Name *</p>
+                          <input type="text" />
+                        </div>
+                        <div class="col-lg-6 col-md-4">
+                          <p>Email *</p>
+                          <input type="email" />
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 comment-form-comment">
+                          <p>Comment</p>
+                          <textarea id="message-box" cols="30" rows="10"></textarea>
+                          <input type="submit" value="Post Comment" />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+        </div>
+      </div>
+    </div> End Blog Page -->

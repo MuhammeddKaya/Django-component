@@ -3,7 +3,7 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center">
-    <a class="logo me-auto me-lg-0"><img src="{% static 'assets/img/letusLogo.jpg' %}" alt="" class="img-fluid" style="margin-right:20px;"></a>
+    <a class="logo me-auto me-lg-0"><img src="{% static 'assets/img/letusLogo.png' %}" alt="" class="img-fluid" style="margin-right:20px;"></a>
     <h1 class="logo me-auto"><a>Let Us Think <span>Green</span></a></h1>
 
     <!-- Uncomment below if you prefer to use an image logo -->
@@ -23,7 +23,7 @@
              </ul> 
         {% endif %}
         {% if item.parent_id is None and item.IsClickable is  True %}
-          <li class="dropdown"><a href="{% url 'pages:page' item.Slug %}"><span>{{item.PageTitle}}</span> <i class="bi bi-chevron-down"></i></a>
+          <li '''class="dropdown" '''><a href="{% url 'pages:page' item.Slug %}"><span>{{item.PageTitle}}</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               {% for subitem in menu_list  %}
                 {% if item.id == subitem.parent_id %}

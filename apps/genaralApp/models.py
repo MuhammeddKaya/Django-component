@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.sites.models import Site
+from django.utils.text import slugify
 
 
 
@@ -55,3 +56,20 @@ class FAQ(models.Model):
     def __str__(self):
         return self.Question
     
+    def save(self, *args, **kwargs):
+        self.Slug = slugify(self.Question)
+        return super().save(*args, **kwargs)
+
+
+class Post(models.Model):
+    Name = models.CharField(max_length=30)
+    SurName = models.CharField(max_length=30)
+    Email= models.EmailField()
+    Comment = models.TextField()
+    IsCreated=models.TimeField(auto_now_add=True)
+        
+    class Meta:
+        db_table="Post"
+        
+    def __str__(self):
+        return f"{self.Name}-{self.SurName}-{self.Email}"

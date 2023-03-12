@@ -46,10 +46,21 @@ INSTALLED_APPS = [
     'apps.socialmedia',
     'apps.componentApp',
     'apps.genaralApp',
+    'crispy_forms',
+    'captcha',
     'mptt',
     'django.contrib.sites',
 
 ]
+
+# third party aplication scripts
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+RECAPTCHA_PUBLIC_KEY = '6Lejp_UkAAAAAL66rXQk3o0WwbGuaKX_FgMyHWK7'
+RECAPTCHA_PRIVATE_KEY = '6Lejp_UkAAAAALsdtR1BeZPFi8vUbZnBsiFYvIXu'
+# -----------------------------------------------------------------------------------
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

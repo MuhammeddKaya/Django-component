@@ -1,0 +1,30 @@
+{% load static %}
+    
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery" style="margin-top:100px;">
+      <div class="container">
+
+        <div class="section-headline services-head text-center">
+          <h2>Gallery</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row g-0">
+        {% for photo in album_list %}
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{{ photo.Image.url }}" class="galelry-lightbox" target="_blank">
+                <p style="justify-content: center;">{{photo.Title}}</p>
+                <img src="{{ photo.Image.url }}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+        
+
+        </div>
+
+      </div>
+    </section><!-- End Gallery Section -->

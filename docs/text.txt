@@ -1,0 +1,30 @@
+sudo fuser -k 8000/tcp
+
+
+
+find . | grep -E "(__pycache__|\.pyc|\.pyo$|migrations)" | xargs rm -rf
+
+
+# Tüm Database verisini JSON dosyasına yazdırma
+python manage.py dumpdata > fixtures/all_db.json
+
+# Veriyi geri yükleme
+python manage.py loaddata fixtures/all_db.json
+
+# Tüm veritabanını yedeklemek yerine her bir modele yani tabloya ait veriyi export ve import etmek daha kullanışlıdır.
+# Çünkü eğer bir veya birden fazla model üzerinde değişiklik yapıldıysa tüm veriyi geri yükleme işlemi başarılı olmayabilir. 
+# Fakat tek tek modeller üzerinde yapılan işlemlerde sorun çıkmıyor. 
+
+# Bir modele yani Tabloya ait veriyi JSON dosyasına export etme
+python manage.py dumpdata pages.Announcement > fixtures/pages.Announcement.json
+
+# Bir modele yani Tabloya ait veriyi JSON dosyasından geri yükleme
+python manage.py loaddata fixtures/pages.Announcement.json
+
+python manage.py loaddata fixtures/genaralApp.Language.json
+python manage.py loaddata  fixtures/photogallery.json
+python manage.py loaddata fixtures/componentApp.ComponentsPages.json
+python manage.py loaddata fixtures/componentApp.Component.json
+python manage.py loaddata fixtures/links.json
+python manage.py loaddata  fixtures/pages.json
+python manage.py loaddata fixtures/slider.json

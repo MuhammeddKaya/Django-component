@@ -1,0 +1,1 @@
+[{"model": "genaralApp.language", "pk": 1, "fields": {"LanguageCode": "tr", "LanguageName": "Türkçe", "IsActive": true}}, {"model": "genaralApp.language", "pk": 2, "fields": {"LanguageCode": "en", "LanguageName": "İngilizce", "IsActive": true}}]
